@@ -136,6 +136,7 @@ namespace TesteRedeservice.Controllers
         {
             try
             {
+                cep = cep.Replace("-", "");
                 var endereco = await _correiosService.ConsultaCorreio(cep);
                 var enderecoFormatado = JsonSerializer.Deserialize<Endereco>(endereco);
 
@@ -176,8 +177,6 @@ namespace TesteRedeservice.Controllers
             ViewBag.Base64 = Convert.ToBase64String(bytes);
 
             return View();
-
-            //Path.Combine(Directory.GetCurrentDirectory(), "data.json");
         }
 
     }
