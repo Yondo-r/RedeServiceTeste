@@ -1,0 +1,37 @@
+﻿@{
+    var listaNumeros = ViewBag.listaNumeros;
+    var erro = @TempData["erro"];
+    ViewData["Title"] = "Ex 2";
+    string numerosListados = string.Empty;
+    if (listaNumeros != null)
+    {
+        foreach (var numero in listaNumeros)
+        {
+            numerosListados = numerosListados + numero + ",";
+        }
+    }
+}
+
+<h2>Exercício 2</h2>
+<h4>Agora grave os números visualizados cada 1 em uma linha em um arquivo texto na pasta raiz da aplicação de nome numeros_ordenar.txt.</h4>
+<hr />
+
+<form asp-action="ex2">
+    <div class="conteudo-exercicio">
+        <input type="hidden" name="numerosLista" value="@numerosListados" />
+        <button type="submit" class="btn btn-primary">Gravar Números</button>
+    </div>
+</form>
+
+@if (erro != null)
+{
+    <div class="alert alert-info conteudo">
+        Sucesso: @erro
+    </div>
+}
+
+<hr />
+<div class="conteudo">
+    <a asp-action="" class="btn btn-secondary">Voltar</a>
+    <a asp-action="Ex3" class="btn btn-secondary">Exercício 3</a>
+</div>

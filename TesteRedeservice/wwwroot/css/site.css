@@ -1,0 +1,76 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.fundoPadrao {
+    background: #cb1010;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(203, 16, 16, 1), rgba(24, 2, 2, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom, rgba(170, 49, 49, 1), rgba(24, 2, 2, 1))
+}
+
+.card-exercicio {
+    width: 300px;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(170, 49, 49, 1), rgba(24, 2, 2, 1));
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    margin: 5px;
+    color:white
+
+}
+
+.card-content {
+    text-align: center;
+}
+.conteudo{
+    display:flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    margin: 3%;
+}
+
+/* Estilos para o tooltip */
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Mostrar tooltip quando o hover */
+.card-content:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.textoInput {
+    align-items: center;
+    justify-content: space-around;
+}

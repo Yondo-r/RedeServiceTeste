@@ -1,0 +1,49 @@
+﻿@using System.Text.Json
+@model List<TesteRedeservice.Models.clsTeste>
+
+@{
+    ViewData["Title"] = "Ex 3";
+}
+
+<h2 class="fw-bold mb-2">Exercício 3</h2>
+<h4>Crie uma lista contendo 100 itens de uma classe de nome clsTeste com as propriedades codigo como número e descricao como texto, os objetos deverão ser criados com a propriedade codigo com números sequenciais(ex: 1, 2, 3, 4, 5) e a descricao como a data e hora atual(ex: 2022 / 10 / 13 08:50:22.123)</h4>
+<hr />
+<form asp-action="ex3" method="post">
+
+    <div class="conteudo-exercicio">
+        <button class="btn btn-success" style="margin: 2%" type="submit">Criar Lista</button>
+        @if (Model != null)
+        {
+            <div class="d-flex justify-content-center">
+
+                <div style="margin: 2%; max-height: 210px; max-width:500px; overflow-y: auto;">
+                    <table class="table table-bordered table-dark">
+                        <thead>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            @for (int i = 0; i < @Model.Count(); i++)
+                            {
+                                <tr>
+                                    <td>@Model[i].Codigo </td>
+                                    <td style="text-align:justify">@Model[i].Descricao </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+
+    </div>
+</form>
+@if (Model != null)
+{
+    <form asp-action="Ex4">
+        <button type="submit" asp-action="Ex4" class="btn btn-primary" style="margin:2%"> Gravar arquivo json </button>
+        <input type="hidden" name="cls" value='@JsonSerializer.Serialize(Model)'>
+
+    </form>
+}
+<div class="conteudo">
+    <button class="btn btn-secondary" asp-action="Index"> Voltar</button>
+</div>

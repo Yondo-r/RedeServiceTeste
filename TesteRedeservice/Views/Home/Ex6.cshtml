@@ -1,0 +1,45 @@
+﻿@model Endereco
+@{
+    ViewData["Title"] = "Ex 6";
+}
+
+
+<h2>Exercício 6</h2>
+<h4>
+    Consuma o webservice dos correios passando um CEP qualquer e mostre em tela o endereço que o
+    mesmo retornar.
+</h4>
+<hr />
+
+
+<form asp-action="Ex6" method="post">
+    <div class="conteudo-exercicio">
+        Informe o CEP: <input name="cep" />
+        <button class="btn btn-success" style="margin: 2%" type="submit">Consultar CEP</button>
+        @if (Model != null)
+        {
+            <div id="areaEndereco" class="justify-content-center">
+
+                <p>Logradouro: @Model.logradouro</p>
+                <p>Bairro: @Model.bairro</p>
+                <p>Localidade: @Model.localidade</p>
+                <p>UF: @Model.uf</p>
+            </div>
+        }
+
+    </div>
+</form>
+
+<hr />
+<div class="conteudo">
+    <a asp-action="" class="btn btn-secondary">Voltar</a>
+    <a asp-action="Ex7" class="btn btn-secondary">Exercício 7</a>
+</div>
+
+@section scripts{
+    <script>
+        function ExibirLista() {
+            document.getElementById("areaEndereco").classList.remove("d-none");
+        }
+    </script>
+}

@@ -1,0 +1,27 @@
+﻿@{
+    var erro = @TempData["erro"];
+    ViewData["Title"] = "Home Page";
+    var listaExercicios = @ViewBag.ex;
+}
+
+<h2 class="fw-bold mb-2 text-uppercase">Lista de exercícios</h2>
+
+<div class="conteudo">
+    @foreach (var exercicio in listaExercicios)
+    {
+        var link = "Ex" + @exercicio.Numero;
+        <a type="button" class="card-exercicio form-outline" data-toggle="tooltip" data-placement="top" title="@exercicio.Descricao" asp-action="@link" )>
+            <div class="card-content">
+                <p>@exercicio.Numero</p>
+                <div class="tooltip">@exercicio.Descricao</div>
+            </div>
+        </a>
+    }
+
+</div>
+    @if (erro != null)
+    {
+        <div class="alert alert-info">
+            Mensgem de erro: @erro
+        </div>
+    }

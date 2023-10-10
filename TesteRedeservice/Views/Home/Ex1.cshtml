@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Ex 1";
+}
+
+<h2 class="fw-bold mb-2">Exercício 1</h2>
+<h4>Faça a aplicação permitir a digitação de números e mostre esses números em tela de forma ordenada.</h4>
+<hr />
+<form>
+    <div class="conteudo-exercicio d-none">
+        <p>Digite um numero</p>
+        <input type="number" id="numeroDigitado" />
+        <button class="btn btn-success" type="button" onclick="adicionarNumero()">Adicionar</button>
+        <hr />
+        <div id="listaNumeros" class="d-none">
+            <hr />
+        </div>
+    </div>
+    <div class="conteudo">
+        <button class="btn btn-secondary" asp-action="Index"> Voltar</button>
+        <button type="button" class="btn btn-primary" id="avancar" onclick="exibirEx()">Avançar</button>
+        <a id="ex2" asp-action="Ex2" asp-route-numeros="" class="btn btn-primary d-none">Exercício 2</a>
+    </div>
+</form>
+
+@section scripts{
+    <script>
+        function exibirEx() {
+            $(".conteudo-exercicio").removeClass("d-none");
+            document.getElementById("ex2").classList.remove("d-none");
+            document.getElementById("avancar").classList.add("d-none");
+        }
+
+        var numeros = []; 
+
+        function adicionarNumero() {
+            var numeroDigitado = document.getElementById("numeroDigitado").value;
+            numeros.push(Number(numeroDigitado)); 
+            numeros.sort(function(a, b) {
+                return a - b;
+            }); 
+            atualizarListaNumeros();
+        }
+
+        function atualizarListaNumeros() {
+            var listaNumerosDiv = document.getElementById("listaNumeros");
+            listaNumerosDiv.innerHTML = "Números ordenados: " + numeros.join(", ");
+            document.getElementById("listaNumeros").classList.remove("d-none");
+            document.getElementById("numeroDigitado").value = "";
+
+            var linkEx2 = document.getElementById("ex2");
+            linkEx2.href = "/Home/Ex2?numeros=" + numeros.join(",");
+        }
+    </script>
+}

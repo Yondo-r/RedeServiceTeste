@@ -1,0 +1,64 @@
+﻿@model List<Banco>
+@{
+    ViewData["Title"] = "Ex 7";
+}
+
+
+<h2>Exercício 6</h2>
+
+<p>Consuma a API para buscar a lista de bancos brasileiros</p>
+<p>Documentação: https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1/get</p>
+<p>URL: https://brasilapi.com.br/api/banks/v1</p>
+<p>Mostre os dados de retorno da API em um Grid.</p>
+
+<hr />
+
+
+
+<div class="conteudo-exercicio">
+    <button class="btn btn-success" style="margin: 2%" type="button" onclick="ExibirLista()">Exibir lista de bancos</button>
+    @if (Model != null)
+    {
+        <div id="areaTabela" class="d-flex justify-content-center d-none">
+
+            <div style="margin: 2%; max-height: 210px; max-width:500px; overflow-y: auto;">
+                <table class="table table-bordered table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">código</th>
+                            <th scope="col">Ispb</th>
+                            <th scope="col">Nome Completo</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        @for (int i = 0; i < @Model.Count(); i++)
+                        {
+                            <tr>
+                                <td>@Model[i].name </td>
+                                <td>@Model[i].code </td>
+                                <td>@Model[i].ispb </td>
+                                <td>@Model[i].fullName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+</div>
+
+<hr />
+<div class="conteudo">
+    <a asp-action="" class="btn btn-secondary">Voltar</a>
+    <a asp-action="Ex8" class="btn btn-secondary">Exercício 8</a>
+</div>
+
+@section scripts{
+    <script>
+        function ExibirLista() {
+            document.getElementById("areaTabela").classList.remove("d-none");
+        }
+    </script>
+}

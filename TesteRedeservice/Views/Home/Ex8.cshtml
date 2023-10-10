@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Ex 8";
+    string base64 = ViewBag.base64;
+}
+
+
+<h2>Exercício 6</h2>
+
+<p>
+    Pela aplicação faça o download da imagem https://redeservice.com.br/wpcontent/uploads/2020/07/redeservice-logo.png, colocar na pasta
+    do sistema, e criar alguma
+    função para ler essa imagem e mostrar em tela no formato base64.
+</p>
+
+<hr />
+
+
+
+<div class="conteudo-exercicio">
+    <button class="btn btn-success" style="margin: 2%" type="button" onclick="ExibirImagem()">Exibir imagem</button>
+
+    <div id="areaImagem" class="d-flex justify-content-center d-none">
+
+        <img src="data:image/png;base64,@base64" alt="Imagem" />
+    </div>
+
+
+</div>
+
+<hr />
+<div class="conteudo">
+    <a asp-action="" class="btn btn-secondary">Voltar</a>
+</div>
+
+@section scripts{
+    <script>
+        function ExibirImagem() {
+            document.getElementById("areaImagem").classList.remove("d-none");
+        }
+    </script>
+}
